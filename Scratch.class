@@ -1,0 +1,37 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+class Scratch {
+   Scratch() {
+   }
+
+   public static void main(String[] var0) throws FileNotFoundException {
+      Scanner var1 = new Scanner(new File("/Users/vishalgupta/Desktop/Info.txt"));
+      var1.useDelimiter("-|\n");
+
+      Scratch$Product[] var2;
+      Scratch$Product var8;
+      for(var2 = new Scratch$Product[0]; var1.hasNext(); var2 = addProduct(var2, var8)) {
+         int var3 = var1.nextInt();
+         String var4 = var1.next();
+         String var5 = var1.next();
+         String var6 = var1.next().substring(1);
+         String var7 = var1.nextLine();
+         var8 = new Scratch$Product(var5, var6, var4, var3, var7);
+      }
+
+      for(Scratch$Product var12 : var2) {
+         System.out.println(var12);
+      }
+
+   }
+
+   private static Scratch$Product[] addProduct(Scratch$Product[] var0, Scratch$Product var1) {
+      Scratch$Product[] var2 = new Scratch$Product[var0.length + 1];
+      System.arraycopy(var0, 0, var2, 0, var0.length);
+      var2[var2.length - 1] = var1;
+      return var2;
+   }
+}
