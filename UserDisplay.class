@@ -1,0 +1,52 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
+
+class UserDisplay {
+   String line = null;
+   int c;
+
+   UserDisplay() {
+   }
+
+   public void findIt(String var1) {
+      try {
+         File var2 = new File("/Users/vishalgupta/Desktop/Info.txt");
+         FileReader var3 = new FileReader(var2);
+         BufferedReader var4 = new BufferedReader(var3);
+
+         while((this.line = var4.readLine()) != null) {
+            if (this.line.contains(var1)) {
+               Scanner var5 = (new Scanner(this.line)).useDelimiter("-|\n");
+               String var6 = var5.next();
+               String var7 = var5.next();
+               String var8 = var5.next().substring(0);
+               String var9 = var5.next();
+               String var10 = var5.nextLine().substring(1);
+               System.out.println("Owner name: " + var6 + "\nCompany model: " + var7 + "\nRegistration number: " + var8 + "\nInsurance status: " + var9 + "\nFine payment status: " + var10);
+               ++this.c;
+            }
+         }
+
+         if (this.c == 0) {
+            System.out.println("Registration number not found!\nPlease contact Admin!");
+         }
+
+         var3.close();
+         var4.close();
+      } catch (Exception var11) {
+         var11.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      UserDisplay var2 = new UserDisplay();
+      System.out.println("Enter registration number: ");
+      String var3 = var1.nextLine();
+      var2.findIt(var3);
+   }
+}
