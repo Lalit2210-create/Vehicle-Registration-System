@@ -1,0 +1,41 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
+
+class AllDisplay {
+   String line = null;
+
+   AllDisplay() {
+   }
+
+   public void displayIt() {
+      try {
+         File var1 = new File("/Users/vishalgupta/Desktop/Info.txt");
+         FileReader var2 = new FileReader(var1);
+         BufferedReader var3 = new BufferedReader(var2);
+
+         while((this.line = var3.readLine()) != null) {
+            Scanner var4 = (new Scanner(this.line)).useDelimiter("-|\n");
+            String var5 = var4.next();
+            String var6 = var4.next();
+            String var7 = var4.next().substring(0);
+            String var8 = var4.next();
+            String var9 = var4.nextLine().substring(1);
+            System.out.println("Owner name: " + var5 + "\nCompany model: " + var6 + "\nRegistration number: " + var7 + "\nInsurance status: " + var8 + "\nFine payment status: " + var9 + "\n\n");
+         }
+
+         var2.close();
+         var3.close();
+      } catch (Exception var10) {
+         var10.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      AllDisplay var1 = new AllDisplay();
+      var1.displayIt();
+   }
+}
