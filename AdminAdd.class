@@ -1,0 +1,23 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
+
+class AdminAdd {
+   AdminAdd() {
+   }
+
+   public static void main(String[] var0) throws IOException {
+      Scanner var1 = new Scanner(System.in);
+      System.out.println("Enter Owner name, company model, registration number, Insurance status ,Fine payment status : ");
+      String var2 = var1.nextLine();
+      String var3 = var1.nextLine();
+      String var4 = var1.nextLine();
+      String var5 = var1.nextLine();
+      String var6 = var1.nextLine();
+      Files.write(Paths.get("/Users/vishalgupta/Desktop/Info.txt"), (var2 + "-" + var3 + "-" + var4 + "-" + var5 + "-" + var6 + "\n").getBytes(), new OpenOption[]{StandardOpenOption.APPEND});
+   }
+}
