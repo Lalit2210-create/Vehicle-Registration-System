@@ -1,0 +1,67 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class AdminDelete {
+   List<String> lines = new ArrayList();
+   String line = null;
+   String reqdLine = null;
+   int c = 0;
+
+   AdminDelete() {
+   }
+
+   public void deleteIt(String var1) {
+      try {
+         File var2 = new File("/Users/vishalgupta/Desktop/Info.txt");
+         FileReader var3 = new FileReader(var2);
+         BufferedReader var4 = new BufferedReader(var3);
+
+         while((this.line = var4.readLine()) != null) {
+            this.reqdLine = this.line;
+            if (this.line.contains(var1)) {
+               System.out.println("Details " + this.line + " deleted");
+               this.line = "";
+               ++this.c;
+            }
+
+            if (this.line != "") {
+               this.lines.add(this.line + "\n");
+            }
+         }
+
+         if (this.c == 0) {
+            System.out.println("Registration number not found!");
+         }
+
+         var3.close();
+         var4.close();
+         FileWriter var5 = new FileWriter(var2);
+         BufferedWriter var6 = new BufferedWriter(var5);
+
+         for(String var8 : this.lines) {
+            var6.write(var8);
+         }
+
+         var6.flush();
+         var6.close();
+      } catch (Exception var9) {
+         var9.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      AdminDelete var2 = new AdminDelete();
+      System.out.println("Enter registration number: ");
+      String var3 = var1.nextLine();
+      var2.deleteIt(var3);
+   }
+}
